@@ -2,39 +2,21 @@
 <html lang="fr" data-theme="light" class="bg-mandy-50">
 
 <head>
-    <title>Mwaaa</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="noindex">
-    <meta name="googlebot" content="noindex">
+    <!-- ... (existing head content) ... -->
+</head>
 
-    <meta name="og:description" content="">
-    <meta name="og:title" content="">
-    <meta name="description" content="">
-    <meta name="title" content="">
-    <meta name="author" content="">
-    <meta name="keywords" content="">
-    <meta name="twitter:image" content="">
+<body class="bg-mandy-50 absolute inset-0 items-center justify-center text-center font-['Poppins']" style="display: none;">
+    <div>
+        <!-- ... (existing body content) ... -->
 
-    <script async src="emojis.js"></script>
+        <div id="buttons" class="mt-8 space-x-3 space-y-3">
+            <button id="yesButton" onclick="yes()" style="padding-left: 2rem; padding-right: 2rem; padding-top: 0.5rem; padding-bottom: 0.5rem;" class="text-white ease-in transition shadow-xl rounded-lg bg-green-400 hover:bg-green-500/90">Yes</button>
+            <button onclick="no()" class="text-white ease-in transition shadow-xl rounded-lg px-8 py-2 bg-mandy-600 hover:bg-mandy-700/90">No</button>
+        </div>
+    </div>
 
     <script>
-        function vibrate(ms) {
-            try {
-                window.navigator.vibrate(ms)
-            } catch (error) {
-                console.error("Vibration not supported")
-            }
-        }
-
-        window.onload = () => {
-            document.getElementById("mainGif").src = "gifs/1.gif"
-            document.body.style.display = "flex"
-        }
-
-        var noCount = 0
-        var yesPx = 2
-        var yesPy = 0.5
+        // ... (existing script content) ...
 
         function yes() {
             document.getElementById("mainGif").src = "gifs/accepte.gif";
@@ -58,60 +40,31 @@
             }, 10);
 
             // Add the code for the fetch request
-            var urlencoded = new URLSearchParams();
+            var myHeaders = new Headers();
+            myHeaders.append("Authorization", "+Z7rTt_Q3B6Gcs7-qojT");
+
+            var formdata = new FormData();
+            formdata.append("target", "085241040338");
+            formdata.append("message", "test dari postman");
 
             var requestOptions = {
-                method: 'GET',
-                body: urlencoded,
+                method: 'POST',
+                headers: myHeaders,
+                body: formdata,
                 redirect: 'follow'
             };
 
-            fetch("https://api.fonnte.com/send?token=+Z7rTt_Q3B6Gcs7-qojT&target=085241040338&message=test", requestOptions)
+            fetch("https://api.fonnte.com/send", requestOptions)
                 .then(response => response.text())
                 .then(result => console.log(result))
                 .catch(error => console.log('error', error));
         }
 
         function no() {
-            noCount++
-
-            vibrate(50)
-
-            if (noCount > 9) {
-                document.getElementById("mainText").classList.remove("text-mandy-400", "hover:text-mandy-500")
-                document.getElementById("mainText").classList.add("text-gray-500")
-                document.getElementById("mainGif").src = "gifs/refuse.gif"
-                document.getElementById("buttons").remove()
-                document.getElementById("mainText").innerText = "That's fine..."
-                vibrate(900)
-            } else if (noCount > 4) document.getElementById("mainGif").src = "gifs/4.gif"
-            else if (noCount > 2) document.getElementById("mainGif").src = "gifs/3.gif"
-            else if (noCount > 0) document.getElementById("mainGif").src = "gifs/2.gif"
-
-            if (noCount < 10) {
-                yesPx += 0.7
-                yesPy += 0.3
-
-                document.getElementById("yesButton").style.paddingLeft = yesPx + "rem"
-                document.getElementById("yesButton").style.paddingRight = yesPx + "rem"
-                document.getElementById("yesButton").style.paddingTop = yesPy + "rem"
-                document.getElementById("yesButton").style.paddingBottom = yesPy + "rem"
-            }
+            // ... (existing no() function content) ...
         }
     </script>
-</head>
-
-<body class="bg-mandy-50 absolute inset-0 items-center justify-center text-center font-['Poppins']" style="display: none;">
-    <div>
-        <img id="mainGif" src="" alt="Illustration" class="mx-auto w-48 h-48" />
-
-        <h3 id="mainText" class="mt-6 py-1 px-4 text-mandy-400 hover:text-mandy-500 ease-in transition text-3xl leading-10 font-semibold">Will you be my Valentine?</h3>
-
-        <div id="buttons" class="mt-8 space-x-3 space-y-3">
-            <button id="yesButton" onclick="yes()" style="padding-left: 2rem; padding-right: 2rem; padding-top: 0.5rem; padding-bottom: 0.5rem;" class="text-white ease-in transition shadow-xl rounded-lg bg-green-400 hover:bg-green-500/90">Yes</button>
-            <button onclick="no()" class="text-white ease-in transition shadow-xl rounded-lg px-8 py-2 bg-mandy-600 hover:bg-mandy-700/90">No</button>
-        </div>
-    </div>
 </body>
 
 </html>
+
