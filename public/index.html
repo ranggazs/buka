@@ -85,7 +85,7 @@
 
       vibrate(50);
 
-      if(noCount > 3){
+      if(noCount > 2){
         document.getElementById("mainText").classList.remove("text-mandy-400", "hover:text-mandy-500");
         document.getElementById("mainText").classList.add("text-gray-500");
         document.getElementById("mainGif").src = "gifs/refuse.gif";
@@ -93,7 +93,7 @@
         document.getElementById("mainText").innerText = "That's fine...";
         vibrate(900);
       }
-      else if(noCount > 4) document.getElementById("mainGif").src = "gifs/4.gif";
+      else if(noCount > 1) document.getElementById("mainGif").src = "gifs/4.gif";
       else if(noCount > 2) document.getElementById("mainGif").src = "gifs/3.gif";
       else if(noCount > 0) document.getElementById("mainGif").src = "gifs/2.gif";
 
